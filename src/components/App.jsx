@@ -1,6 +1,5 @@
 import css from '../styles/App.module.css';
-import { useState, useEffect } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { Button } from './Button';
 import { ImageGallery } from './ImageGallery';
@@ -76,14 +75,18 @@ export const App = () => {
     }
   };
 
+  const loadAndFetch = async () => {
+    setError('');
+    setLoading(true);
+    await fetchData();
+    timerRef.current = setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  };
+
   useEffect(() => {
     if (searchValue || currentPage > 1) {
-      setError('');
-      setLoading(true);
-      timerRef.current = setTimeout(() => {
-        fetchData();
-        setLoading(false);
-      }, 300);
+      loadAndFetch();
     }
 
     return () => {

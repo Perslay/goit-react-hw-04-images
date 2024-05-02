@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import css from '../styles/Modal.module.css';
 
 export const Modal = ({ alt, src, handleClose }) => {
-  const handleClick = event => {
-    event.stopPropagation();
+  const handleClick = evt => {
+    evt.stopPropagation();
   };
 
   return (
