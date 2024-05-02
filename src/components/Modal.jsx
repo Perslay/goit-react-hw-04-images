@@ -8,9 +8,7 @@ export const Modal = ({ alt, src, handleClose }) => {
 
   return (
     <div onClick={handleClose} className={css.overlay}>
-      <div onClick={handleClick} className={css.modal}>
-        <img src={src} alt={alt} id="modalImage" />
-      </div>
+        <img src={src} alt={alt} id="modalImage" onClick={handleClick} className={css.modal} />
     </div>
   );
 };
